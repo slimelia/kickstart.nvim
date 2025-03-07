@@ -1021,7 +1021,13 @@ require('lazy').setup({
               action = 'Lazy update',
             },
             {
-              icon = '',
+              icon = '󰒓 ',
+              desc = 'Edit settings (init.lua)',
+              key = 's',
+              action = 'e $MYVIMRC',
+            },
+            {
+              icon = '󰈆 ',
               desc = 'Quit',
               key = 'q',
               action = 'qa!',
