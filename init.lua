@@ -982,6 +982,10 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
   {
+    'm4xshen/autoclose.nvim',
+    config = function() require("autoclose").setup() end
+  },
+  { -- Dashboard plugin
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     lazy = false,
