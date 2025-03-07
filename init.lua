@@ -156,6 +156,10 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Set Fold method to indents
+vim.opt.foldmethod = 'indent'
+vim.opt.foldlevel = 99
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -191,6 +195,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Remap Visual Block to CTRL+q
 vim.keymap.set('n', '<C-v>', '<C-q>', { desc = 'Visual Block mode' })
+
+-- Set FG for Dashboard
+vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#2bbac5' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -905,7 +912,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'onedark_vivid'
     end,
   },
 
@@ -974,7 +981,57 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    lazy = false,
+    config = function()
+      require('dashboard').setup {
+        theme = 'doom',
+        shortcut_type = 'letter',
+        config = {
+          header = {
+            '',
+            '███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+            '████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+            '██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+            '██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+            '██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+            '╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+            '',
+          },
+          center = {
+            {
+              icon = ' ',
+              desc = 'New file',
+              key = 'n',
+              action = 'enew',
+            },
 
+            {
+              icon = '󰍉 ',
+              desc = 'Find files',
+              key = 'f',
+              action = 'Telescope find_files',
+            },
+            {
+              icon = '󰦗 ',
+              desc = 'Update plugins',
+              key = 'u',
+              action = 'Lazy update',
+            },
+            {
+              icon = '',
+              desc = 'Quit',
+              key = 'q',
+              action = 'qa!',
+            },
+          },
+        },
+      }
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+  },
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
