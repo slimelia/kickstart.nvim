@@ -196,9 +196,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Remap Visual Block to CTRL+q
 vim.keymap.set('n', '<C-v>', '<C-q>', { desc = 'Visual Block mode' })
 
--- Set FG for Dashboard
-vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#2bbac5' })
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -902,16 +899,19 @@ require('lazy').setup({
     'olimorris/onedarkpro.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
+      local colour = require("onedarkpro.helpers")
+      local colours = colour.get_preloaded_colors()
       ---@diagnostic disable-next-line: missing-fields
       require('onedarkpro').setup {
         highlights = {
           Comment = { italic = false }, -- Disable italics in comments
+          DashboardHeader = { fg = colours.cyan },
+          DashboardKey = { fg = colours.red },
+          DashboardIcon = { fg = colours.yellow },
         },
       }
 
       -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'onedark_vivid'
     end,
   },
