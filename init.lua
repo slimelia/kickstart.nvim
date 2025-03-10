@@ -1033,7 +1033,7 @@ require('lazy').setup({
         },
         preview = {
           command = 'cat',
-          file_path = '.config/nvim/flag',
+          file_path = '~/.config/nvim/flag',
           file_height = 18,
           file_width = 50,
         },
