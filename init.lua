@@ -1011,6 +1011,12 @@ require('lazy').setup({
               action = 'Telescope find_files',
             },
             {
+              icon = '󰥩 ',
+              desc = 'File explorer',
+              key = 'e',
+              action = 'Explore',
+            },
+            {
               icon = '󰦗 ',
               desc = 'Update plugins',
               key = 'u',
