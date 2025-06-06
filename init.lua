@@ -1050,7 +1050,15 @@ require('lazy').setup({
     lazy = false,
     branch = 'regexp', -- This is the regexp branch, use this for the new version
     config = function()
-      require('venv-selector').setup()
+      require('venv-selector').setup {
+        settings = {
+          search = {
+            home_venvs = {
+              command = "fd '/bin/python$' $HOME --full-path --color never -E /proc -HI -a -L",
+            },
+          },
+        },
+      }
     end,
     keys = {
       { '<leader>v', '<cmd>VenvSelect<cr>', desc = 'Select a Python [V]irtual Environment' },
