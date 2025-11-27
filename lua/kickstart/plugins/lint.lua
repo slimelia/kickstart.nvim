@@ -7,7 +7,7 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         -- python = { 'pylint', 'mypy', 'ruff', 'flake8' },
-        python = { 'pylint', 'ruff', 'flake8', 'pyflakes' },
+        python = { 'pylint', 'ruff', 'flake8' },
       }
       -- lint.linters['pylint'].args = function()
       --   return {
@@ -68,8 +68,5 @@ return {
         end,
       })
     end,
-  },
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
 }
