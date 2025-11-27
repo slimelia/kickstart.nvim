@@ -6,19 +6,20 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        python = { 'pylint', 'mypy', 'ruff', 'flake8' },
+        -- python = { 'pylint', 'mypy', 'ruff', 'flake8' },
+        python = { 'pylint', 'ruff', 'flake8', 'pyflakes' },
       }
-      lint.linters['pylint'].args = function()
-        return {
-          '--disable=import-error',
-        }
-      end
+      -- lint.linters['pylint'].args = function()
+      --   return {
+      --     '--disable=import-error',
+      --   }
+      -- end
 
-      lint.linters['mypy'].args = function()
-        return {
-          '--ignore-missing-imports',
-        }
-      end
+      -- lint.linters['mypy'].args = function()
+      --   return {
+      --     '--ignore-missing-imports',
+      --   }
+      -- end
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
